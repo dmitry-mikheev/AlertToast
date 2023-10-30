@@ -186,6 +186,9 @@ public struct AlertToast: View{
     /// - `banner`
     public var displayMode: DisplayMode = .alert
     
+    ///Alignment for subTitle text
+    public var subTitleAlignment: TextAlignment = .center
+    
     ///What the alert would show
     ///`complete`, `error`, `systemImage`, `image`, `loading`, `regular`
     public var type: AlertType
@@ -258,6 +261,7 @@ public struct AlertToast: View{
                 if subTitle != nil{
                     Text(LocalizedStringKey(subTitle!))
                         .font(style?.subTitleFont ?? Font.subheadline)
+                        .multilineTextAlignment(subTitleAlignment)
                 }
             }
             .multilineTextAlignment(.leading)
@@ -302,14 +306,14 @@ public struct AlertToast: View{
                         if title != nil{
                             Text(LocalizedStringKey(title ?? ""))
                                 .font(style?.titleFont ?? Font.body.bold())
-                                .multilineTextAlignment(.center)
+                                .multilineTextAlignment(subTitleAlignment)
                                 .textColor(style?.titleColor ?? nil)
                         }
                         if subTitle != nil{
                             Text(LocalizedStringKey(subTitle ?? ""))
                                 .font(style?.subTitleFont ?? Font.footnote)
                                 .opacity(0.7)
-                                .multilineTextAlignment(.center)
+                                .multilineTextAlignment(subTitleAlignment)
                                 .textColor(style?.subtitleColor ?? nil)
                         }
                     }
@@ -375,7 +379,7 @@ public struct AlertToast: View{
                     Text(LocalizedStringKey(subTitle ?? ""))
                         .font(style?.subTitleFont ?? Font.footnote)
                         .opacity(0.7)
-                        .multilineTextAlignment(.center)
+                        .multilineTextAlignment(subTitleAlignment)
                         .textColor(style?.subtitleColor ?? nil)
                 }
             }
